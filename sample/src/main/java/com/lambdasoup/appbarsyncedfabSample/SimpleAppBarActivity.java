@@ -49,9 +49,14 @@ public class SimpleAppBarActivity extends AppCompatActivity
         //noinspection ConstantConditions
         getSupportActionBar().setTitle(getTitle());
 
-        itemsAdapter = new ItemsAdapter();
 
-        RecyclerView itemsList = (RecyclerView) findViewById(R.id.content_list);
+        final RecyclerView itemsList = (RecyclerView) findViewById(R.id.content_list);
+        itemsAdapter = new ItemsAdapter(new ItemsAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Long item) {
+                Snackbar.make(itemsList, getString(R.string.item_clicked, item), Snackbar.LENGTH_LONG).show();
+            }
+        });
         //noinspection ConstantConditions
         itemsList.setAdapter(itemsAdapter);
 

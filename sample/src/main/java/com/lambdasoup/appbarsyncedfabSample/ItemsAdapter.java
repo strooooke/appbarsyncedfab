@@ -16,6 +16,7 @@
 
 package com.lambdasoup.appbarsyncedfabSample;
 
+import android.support.design.widget.Snackbar;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.util.SortedListAdapterCallback;
@@ -32,8 +33,10 @@ import java.util.Objects;
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
     private final SortedList<Long> dataset;
     private long currentMaxItem = 0;
+    private final OnItemClickListener onItemClickListener;
 
-    public ItemsAdapter() {
+    public ItemsAdapter(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
         dataset = new SortedList<>(Long.class, new SortedListAdapterCallback<Long>(this) { // yes, we're leaking half-constructed this. Currently, it's fine.
             @Override
             public int compare(Long left, Long right) {
@@ -92,9 +95,22 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             super(itemView);
         }
 
-        public void bindItem(Long item) {
+        public void bindItem(final Long item) {
             TextView textView = (TextView) itemView.findViewById(android.R.id.text1);
             textView.setText(textView.getContext().getString(R.string.item_text, item));
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onItemClick(item);
+                    }
+                }
+            });
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Long item);
     }
 }

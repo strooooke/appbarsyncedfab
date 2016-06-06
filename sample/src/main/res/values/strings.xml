@@ -24,4 +24,5 @@
     <string name="item_text">Item %d</string>
     <string name="title_about">About</string>
     <string name="title_simple_app_bar">Simple App Bar</string>
+    <string name="item_clicked">Clicked item %d!</string>
 </resources>
