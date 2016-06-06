@@ -1,11 +1,11 @@
 # appbarsyncedfab
 An Android library for getting a FAB to slide in and out in sync with a scrolling AppBarLayout.
 
-# Example
+## Appearance
 
 TODO
 
-# Usage
+## Usage
 
 Add as gradle dependency via [jitpack.io]: Add the JitPack repository in your root build.gradle at the end of repositories:
 ```
@@ -24,9 +24,37 @@ Add the dependency in your app build.gradle file:
 	}
 ```
 
+Add either the behavior to your FAB in XML
+```
+<android.support.design.widget.CoordinatorLayout
+    ...
+  >
+  
+  <android.support.design.widget.AppBarLayout
+    ...
+    >
+  </android.support.design.widget.AppBarLayout>
+
+  ...
+
+  <android.support.design.widget.FloatingActionButton
+    ...
+    app:layout_behavior="@string/appbarsyncedfab_fab_behavior"/>
+
+</android.support.design.widget.CoordinatorLayout>
+```
+
+or, for better performance, wire up the listener, the CoordinatorLayout, the AppBarLayout and the FAB by hand:
+```
+CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
+AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); 
+FabOffsetter fabOffsetter = new FabOffsetter(coordinatorLayout, fab);
+appBarLayout.addOnOffsetChangedListener(fabOffsetter);
+```
 
 
-# License
+## License
 
     Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
     
