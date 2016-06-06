@@ -1,9 +1,29 @@
 # appbarsyncedfab
-An Android library for getting a FAB to slide in and out in sync with a scrolling AppBarLayout
+An Android library for getting a FAB to slide in and out in sync with a scrolling AppBarLayout.
 
-# Explanation, usage etc.
+# Example
 
 TODO
+
+# Usage
+
+Add as gradle dependency via [jitpack.io]: Add the JitPack repository in your root build.gradle at the end of repositories:
+```
+	allprojects {
+		repositories {
+			...
+			maven { url "https://jitpack.io" }
+		}
+	}
+```
+
+Add the dependency in your app build.gradle file:
+```
+	dependencies {
+	        compile 'com.github.strooooke:appbarsyncedfab:v0.1'
+	}
+```
+
 
 
 # License
@@ -22,3 +42,5 @@ TODO
     See the License for the specific language governing permissions and
     limitations under the License.
 
+
+[jitpack.io]: https://jitpack.io/#strooooke/appbarsyncedfab
