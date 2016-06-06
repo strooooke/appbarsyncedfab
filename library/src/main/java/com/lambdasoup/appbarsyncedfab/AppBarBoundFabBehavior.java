@@ -31,6 +31,10 @@ import android.view.View;
  */
 public class AppBarBoundFabBehavior extends FloatingActionButton.Behavior {
 
+    // Whether we already registered our OnOffsetChangedListener with the AppBarLayout
+    // Does not get saves in instance state, because AppBarLayout does not save its listeners either
+    private boolean listenerRegistered = false;
+
     public AppBarBoundFabBehavior(Context context, AttributeSet attrs) {
         super();
     }
@@ -38,8 +42,9 @@ public class AppBarBoundFabBehavior extends FloatingActionButton.Behavior {
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, FloatingActionButton child, View dependency) {
-        if (dependency instanceof AppBarLayout) {
+        if (dependency instanceof AppBarLayout && !listenerRegistered) {
             ((AppBarLayout) dependency).addOnOffsetChangedListener(new FabOffsetter(parent, child));
+            listenerRegistered = true;
         }
         return dependency instanceof AppBarLayout || super.layoutDependsOn(parent, child, dependency);
     }
