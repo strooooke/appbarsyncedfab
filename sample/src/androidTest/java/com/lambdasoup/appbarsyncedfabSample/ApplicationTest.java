@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.lambdasoup.appbarsyncedfab;
+package com.lambdasoup.appbarsyncedfabSample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

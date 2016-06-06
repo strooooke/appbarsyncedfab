@@ -17,4 +17,5 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <item type="id" name="fab_translationY_from_AppBarBoundFabBehavior"/>
+    <string name="appbarsyncedfab_fab_behavior" translatable="false">com.lambdasoup.appbarsyncedfab.AppBarBoundFabBehavior</string>
 </resources>
