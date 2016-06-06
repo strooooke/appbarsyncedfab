@@ -30,3 +30,17 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# gedit etc.
+**/*~
+
+# intellij
+# http://stackoverflow.com/a/5534865
+*.iml
+!.idea/
+.idea/*
+!.idea/copyright/
+!.idea/codeStyleSettings.xml
+
+# osx junk
+.DS_Store
