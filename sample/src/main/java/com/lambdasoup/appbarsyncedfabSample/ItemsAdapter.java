@@ -16,7 +16,6 @@
 
 package com.lambdasoup.appbarsyncedfabSample;
 
-import android.support.design.widget.Snackbar;
 import android.support.v7.util.SortedList;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.util.SortedListAdapterCallback;
@@ -24,8 +23,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.Objects;
 
 /**
  * Created by jl on 06.06.16.
@@ -40,17 +37,20 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         dataset = new SortedList<>(Long.class, new SortedListAdapterCallback<Long>(this) { // yes, we're leaking half-constructed this. Currently, it's fine.
             @Override
             public int compare(Long left, Long right) {
-                return Long.compare(left, right);
+                // Long.compare(left, right)
+                return left < right ? -1 : (left.longValue() == right.longValue() ? 0 : 1);
             }
 
             @Override
             public boolean areContentsTheSame(Long oldItem, Long newItem) {
-                return Objects.equals(oldItem, newItem);
+                // Object.equals(oldItem, newItem)
+                return (oldItem == null) ? (newItem == null) : oldItem.equals(newItem);
             }
 
             @Override
             public boolean areItemsTheSame(Long item1, Long item2) {
-                return Objects.equals(item1, item2);
+                // Object.equals(item1, item2)
+                return (item1 == null) ? (item2 == null) : item1.equals(item2);
             }
         });
         setHasStableIds(true);
