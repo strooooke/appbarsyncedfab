@@ -20,14 +20,25 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.view.View;
 
-import static com.lambdasoup.appbarsyncedfab.Nullables.coalesce;
-
+/**
+ * {@link android.support.design.widget.AppBarLayout.OnOffsetChangedListener} implementation
+ * that reacts on offset changes by translating the FAB towards the bottom. The FAB gets displaced
+ * such that when the AppBarLayout is completely collapsed, then the top of the FAB is at the bottom
+ * of the parent view (typically a {@link CoordinatorLayout}). For intermediate states, the fraction of the FAB
+ * displacement respective to this total is relative to the fraction of the AppBarLayout collapse.
+ */
 public class FabOffsetter implements AppBarLayout.OnOffsetChangedListener {
-    private final CoordinatorLayout parent;
+
+    private final View parent;
     private final FloatingActionButton fab;
 
-    public FabOffsetter(@NonNull CoordinatorLayout parent, @NonNull FloatingActionButton child) {
+    // need to separate translationY on the fab that comes from this behavior
+    // and one that comes from other sources
+    private float fabTranslationYByThis = 0.0f;
+
+    public FabOffsetter(@NonNull View parent, @NonNull FloatingActionButton child) {
         this.parent = parent;
         this.fab = child;
     }
@@ -40,23 +51,20 @@ public class FabOffsetter implements AppBarLayout.OnOffsetChangedListener {
         //  if displacementFraction == 1.0f then full displacement, appBar is totally collapsed)
         float displacementFraction = -verticalOffset / (float) appBarLayout.getHeight();
 
-        // need to separate translationY on the fab that comes from this behavior
-        // and one that comes from other sources
-        // translationY from this behavior is stored in a tag on the fab
-        float translationYFromThis = coalesce((Float) fab.getTag(R.id.fab_translationY_from_AppBarBoundFabBehavior), 0f);
-
         // top position, accounting for translation not coming from this behavior
-        float topUntranslatedFromThis = fab.getTop() + fab.getTranslationY() - translationYFromThis;
+        float topUntranslatedFromThis = fab.getTop() + fab.getTranslationY() - fabTranslationYByThis;
 
         // total length to displace by (from position uninfluenced by this behavior) for a full appBar collapse
         float fullDisplacement = parent.getBottom() - topUntranslatedFromThis;
 
-        // calculate and store new value for displacement coming from this behavior
+        // calculate new value for displacement coming from this behavior
         float newTranslationYFromThis = fullDisplacement * displacementFraction;
-        fab.setTag(R.id.fab_translationY_from_AppBarBoundFabBehavior, newTranslationYFromThis);
 
         // update translation value by difference found in this step
-        fab.setTranslationY(newTranslationYFromThis - translationYFromThis + fab.getTranslationY());
+        fab.setTranslationY(newTranslationYFromThis - fabTranslationYByThis + fab.getTranslationY());
+
+        // store new value
+        fabTranslationYByThis = newTranslationYFromThis;
     }
 
     @Override
