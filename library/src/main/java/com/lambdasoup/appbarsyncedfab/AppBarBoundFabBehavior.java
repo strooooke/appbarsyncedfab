@@ -38,6 +38,7 @@ import java.util.List;
  * Replaces inbuilt Snackbar displacement by a relative version that does not interfere with other
  * sources of translation for the FAB; in particular not translation from the sync to the scrolling AppBarLayout.
  */
+@SuppressWarnings("WeakerAccess")
 public class AppBarBoundFabBehavior extends FloatingActionButton.Behavior {
 
     private static final String TAG = AppBarBoundFabBehavior.class.getSimpleName();
@@ -51,6 +52,7 @@ public class AppBarBoundFabBehavior extends FloatingActionButton.Behavior {
     // respect that other code may also change y translation; keep track of the part coming from us
     private float snackbarFabTranslationYByThis;
 
+    @SuppressWarnings("WeakerAccess")
     public AppBarBoundFabBehavior(Context context, AttributeSet attrs) {
         super();
     }

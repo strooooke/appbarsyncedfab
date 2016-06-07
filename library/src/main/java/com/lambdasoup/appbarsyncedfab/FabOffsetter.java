@@ -29,6 +29,7 @@ import android.view.View;
  * of the parent view (typically a {@link CoordinatorLayout}). For intermediate states, the fraction of the FAB
  * displacement respective to this total is relative to the fraction of the AppBarLayout collapse.
  */
+@SuppressWarnings("WeakerAccess")
 public class FabOffsetter implements AppBarLayout.OnOffsetChangedListener {
 
     private final View parent;

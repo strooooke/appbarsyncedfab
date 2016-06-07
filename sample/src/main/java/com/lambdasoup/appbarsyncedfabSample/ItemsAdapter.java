@@ -25,7 +25,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 /**
- * Created by jl on 06.06.16.
+ * Adapter holding Integer items for demo purposes.
  */
 public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
     private final SortedList<Long> dataset;
