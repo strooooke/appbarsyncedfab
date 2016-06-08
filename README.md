@@ -3,7 +3,7 @@ An Android library for getting a FAB to slide in and out in sync with a scrollin
 
 ## Appearance
 
-TODO
+![SimpleAppBar](https://cloud.githubusercontent.com/assets/856723/15891088/370d3210-2d73-11e6-866a-69ec9b1fcde1.gif)
 
 ## Usage
 
