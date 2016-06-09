@@ -44,7 +44,7 @@ Add either the behavior to your FAB in XML
 </android.support.design.widget.CoordinatorLayout>
 ```
 
-or, for better performance, wire up the listener, the CoordinatorLayout, the AppBarLayout and the FAB by hand:
+You can also wire up the listener, the CoordinatorLayout, the AppBarLayout and the FAB by hand:
 ```
 CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
 AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
@@ -52,7 +52,7 @@ FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 FabOffsetter fabOffsetter = new FabOffsetter(coordinatorLayout, fab);
 appBarLayout.addOnOffsetChangedListener(fabOffsetter);
 ```
-
+This way is not recommended; you will lose proper interaction with the snackbar.
 
 ## License
 
