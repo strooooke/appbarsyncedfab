@@ -25,6 +25,9 @@
         <item
             android:id="@+id/nav_header_app_bar"
             android:title="@string/title_header_app_bar" />
+        <item
+            android:id="@+id/nav_complex_app_bar"
+            android:title="@string/title_complex_app_bar"/>
     </group>
 
     <item

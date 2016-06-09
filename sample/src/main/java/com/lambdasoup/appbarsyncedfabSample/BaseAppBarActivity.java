@@ -131,6 +131,9 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
                 case R.id.nav_header_app_bar:
                     startActivity(new Intent(getApplicationContext(), HeaderAppBarActivity.class));
                     break;
+                case R.id.nav_complex_app_bar:
+                    startActivity(new Intent(getApplicationContext(), ComplexAppBarActivity.class));
+                    break;
                 case R.id.nav_about:
                     startActivity(new Intent(getApplicationContext(), AboutActivity.class));
                     break;
