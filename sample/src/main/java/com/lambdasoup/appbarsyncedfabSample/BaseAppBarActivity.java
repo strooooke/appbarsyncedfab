@@ -31,7 +31,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
@@ -56,7 +55,7 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         setContentView(R.layout.activity_base);
 
         // ViewStub replacement is here to allow DRY with the different activities
-        // that differ only in their AppBarLayout. Ususally, you'd just have your AppBarLayout
+        // that differ only in their AppBarLayout. Usually, you'd just have your AppBarLayout
         // directly declared in your activity layout xml.
         ViewStub appBarStub = (ViewStub) findViewById(R.id.app_bar_stub);
         //noinspection ConstantConditions

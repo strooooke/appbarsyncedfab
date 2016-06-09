@@ -27,4 +27,5 @@
     <string name="title_header_app_bar">With header</string>
     <string name="text_header_placeholder">Stand-in for a TabLayout or such</string>
     <string name="title_complex_app_bar">Complex collapsing AppBar</string>
+    <string name="sample_image_content_desc">Some image; it\'s just an example.</string>
 </resources>
