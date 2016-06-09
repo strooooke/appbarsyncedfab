@@ -50,7 +50,7 @@ public class FabOffsetter implements AppBarLayout.OnOffsetChangedListener {
         // let's see how far along the way the appBarLayout is
         // (if displacementFraction == 0.0f then no displacement, appBar is fully expanded;
         //  if displacementFraction == 1.0f then full displacement, appBar is totally collapsed)
-        float displacementFraction = -verticalOffset / (float) appBarLayout.getHeight();
+        float displacementFraction = -verticalOffset / (float) appBarLayout.getTotalScrollRange();
 
         // top position, accounting for translation not coming from this behavior
         float topUntranslatedFromThis = fab.getTop() + fab.getTranslationY() - fabTranslationYByThis;
