@@ -36,6 +36,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 
+/**
+ * Common base for the different AppBarLayout example activities. Contains a RecyclerView
+ * with addable/deletable items, to allow easy experimentation with various behaviors for
+ * a FAB (reacting on nestedScroll events can be problematic when the NestedScrollView changes
+ * its size and ceases to scroll). Contains navigation for easy navigation between the different
+ * example activities.
+ */
 public abstract class BaseAppBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,15 +55,20 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
 
+        // ViewStub replacement is here to allow DRY with the different activities
+        // that differ only in their AppBarLayout. Ususally, you'd just have your AppBarLayout
+        // directly declared in your activity layout xml.
         ViewStub appBarStub = (ViewStub) findViewById(R.id.app_bar_stub);
         //noinspection ConstantConditions
         appBarStub.setLayoutResource(getAppBarLayoutResource());
         appBarStub.inflate();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //noinspection ConstantConditions
-        getSupportActionBar().setTitle(getTitle());
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            //noinspection ConstantConditions
+            getSupportActionBar().setTitle(getTitle());
+        }
 
 
         final RecyclerView itemsList = (RecyclerView) findViewById(R.id.content_list);
@@ -104,9 +116,6 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @LayoutRes
-    protected abstract int getAppBarLayoutResource();
-
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -117,10 +126,8 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
     }
 
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id != getNavId()) {
@@ -147,6 +154,15 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Provide navigation id resource for the activity.
+     */
     @IdRes
     protected abstract int getNavId();
+
+    /**
+     * Provide layout resource for the app bar. A contained toolbar should have id R.id.toolbar.
+     */
+    @LayoutRes
+    protected abstract int getAppBarLayoutResource();
 }
