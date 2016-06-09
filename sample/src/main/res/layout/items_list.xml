@@ -27,7 +27,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layoutManager="LinearLayoutManager"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".SimpleAppBarActivity"
+    tools:context=".SimpleAppBarAppBarActivity"
     tools:showIn="@layout/app_bar_simple_app_bar"
     >
 </android.support.v7.widget.RecyclerView>

@@ -16,16 +16,16 @@
 
 package com.lambdasoup.appbarsyncedfabSample;
 
-public class SimpleAppBarActivity extends BaseActivity {
+public class HeaderAppBarActivity extends BaseAppBarActivity {
 
 
     @Override
     protected int getAppBarLayoutResource() {
-        return R.layout.app_bar_simple_app_bar;
+        return R.layout.app_bar_header_app_bar;
     }
 
     @Override
     protected int getNavId() {
-        return R.id.nav_simple_app_bar;
+        return R.id.nav_header_app_bar;
     }
 }

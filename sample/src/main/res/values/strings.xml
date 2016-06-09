@@ -24,4 +24,6 @@
     <string name="title_about">About</string>
     <string name="title_simple_app_bar">Simple App Bar</string>
     <string name="item_clicked">Clicked item %d!</string>
+    <string name="title_header_app_bar">With header</string>
+    <string name="text_header_placeholder">Stand-in for a TabLayout or such</string>
 </resources>

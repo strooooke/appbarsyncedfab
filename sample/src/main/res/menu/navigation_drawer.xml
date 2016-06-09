@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,15 +16,19 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group
+        android:id="@+id/nav_group_sample_activities"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_simple_app_bar"
             android:title="@string/title_simple_app_bar" />
+        <item
+            android:id="@+id/nav_header_app_bar"
+            android:title="@string/title_header_app_bar" />
     </group>
 
     <item
         android:id="@+id/nav_about"
-        android:title="@string/title_about">
-    </item>
+        android:title="@string/title_about"/>
 
 </menu>

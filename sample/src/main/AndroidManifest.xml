@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SimpleAppBarActivity"
+            android:name=".SimpleAppBarAppBarActivity"
             android:label="@string/title_simple_app_bar"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -32,10 +32,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutActivity"
+        <activity
+            android:name=".HeaderAppBarActivity"
+            android:label="@string/title_header_app_bar"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".AboutActivity"
             android:label="@string/title_about"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

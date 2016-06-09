@@ -31,14 +31,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 
-public abstract class BaseActivity extends AppCompatActivity
+public abstract class BaseAppBarActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = BaseActivity.class.getSimpleName();
+    private static final String TAG = BaseAppBarActivity.class.getSimpleName();
     private DrawerLayout drawer;
     private ItemsAdapter itemsAdapter;
 
@@ -97,10 +98,9 @@ public abstract class BaseActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // TODO: start with current item id checked
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         //noinspection ConstantConditions
+        navigationView.getMenu().findItem(getNavId()).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -126,7 +126,10 @@ public abstract class BaseActivity extends AppCompatActivity
         if (id != getNavId()) {
             switch (id) {
                 case R.id.nav_simple_app_bar:
-                    startActivity(new Intent(getApplicationContext(), SimpleAppBarActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SimpleAppBarAppBarActivity.class));
+                    break;
+                case R.id.nav_header_app_bar:
+                    startActivity(new Intent(getApplicationContext(), HeaderAppBarActivity.class));
                     break;
                 case R.id.nav_about:
                     startActivity(new Intent(getApplicationContext(), AboutActivity.class));
