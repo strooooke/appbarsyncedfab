@@ -3,7 +3,7 @@ An Android library for getting a FAB to slide in and out in sync with a scrollin
 
 ## Appearance
 
-![SimpleAppBar](https://cloud.githubusercontent.com/assets/856723/15891088/370d3210-2d73-11e6-866a-69ec9b1fcde1.gif)
+![SimpleAppBar](https://cloud.githubusercontent.com/assets/856723/15891088/370d3210-2d73-11e6-866a-69ec9b1fcde1.gif) ![ComplexAppBar](https://cloud.githubusercontent.com/assets/856723/15934370/98bdee78-2e63-11e6-88b9-8669de9ee57a.gif)
 
 ## Usage
 
@@ -20,7 +20,7 @@ Add as gradle dependency via [jitpack.io]: Add the JitPack repository in your ro
 Add the dependency in your app build.gradle file:
 ```
 	dependencies {
-	        compile 'com.github.strooooke:appbarsyncedfab:v0.2'
+	        compile 'com.github.strooooke:appbarsyncedfab:v0.3'
 	}
 ```
 
