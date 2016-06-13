@@ -24,6 +24,7 @@ public class HeaderAppBarActivity extends BaseAppBarActivity {
         return R.layout.app_bar_header_app_bar;
     }
 
+
     @Override
     protected int getNavId() {
         return R.id.nav_header_app_bar;

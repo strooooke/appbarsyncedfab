@@ -58,9 +58,12 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         // that differ only in their AppBarLayout. Usually, you'd just have your AppBarLayout
         // directly declared in your activity layout xml.
         ViewStub appBarStub = (ViewStub) findViewById(R.id.app_bar_stub);
+
+        onBeforeInflateAppBarLayout();
         //noinspection ConstantConditions
         appBarStub.setLayoutResource(getAppBarLayoutResource());
         appBarStub.inflate();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
@@ -115,6 +118,8 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -152,6 +157,11 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * Perform adjustments on layout if needed.
+     */
+    protected void onBeforeInflateAppBarLayout(){}
 
     /**
      * Provide navigation id resource for the activity.

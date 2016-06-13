@@ -24,6 +24,7 @@ public class SimpleAppBarAppBarActivity extends BaseAppBarActivity {
         return R.layout.app_bar_simple_app_bar;
     }
 
+
     @Override
     protected int getNavId() {
         return R.id.nav_simple_app_bar;
