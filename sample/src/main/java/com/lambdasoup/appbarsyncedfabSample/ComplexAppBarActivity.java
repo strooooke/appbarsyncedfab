@@ -26,8 +26,6 @@ public class ComplexAppBarActivity extends BaseAppBarActivity {
         View coordinatorLayout = findViewById(R.id.coordinator_layout);
         // Because we're using a single base layout, for proper appearance
         // of the collapsing toolbar layout, we need to do this programmatically.
-        // Waiting for https://code.google.com/p/android/issues/detail?id=212720 to get resolved
-        // so this has a chance to work; until then this is a reminder for users of CollapsingToolbarLayout.
         //noinspection ConstantConditions
         coordinatorLayout.setFitsSystemWindows(true);
     }
