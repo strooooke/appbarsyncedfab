@@ -20,7 +20,7 @@ Add as gradle dependency via [jitpack.io]: Add the JitPack repository in your ro
 Add the dependency in your app build.gradle file:
 ```
 	dependencies {
-	        compile 'com.github.strooooke:appbarsyncedfab:v0.3'
+	        compile 'com.github.strooooke:appbarsyncedfab:v0.4'
 	}
 ```
 
