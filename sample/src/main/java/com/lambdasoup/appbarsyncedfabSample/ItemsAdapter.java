@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+ * Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,52 +16,53 @@
 
 package com.lambdasoup.appbarsyncedfabSample;
 
-import android.support.v7.util.SortedList;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.util.SortedListAdapterCallback;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SortedList;
+import androidx.recyclerview.widget.SortedListAdapterCallback;
+
 /**
  * Adapter holding Integer items for demo purposes.
  */
-public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
+class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> {
     private final SortedList<Long> dataset;
     private long currentMaxItem = 0;
     private final OnItemClickListener onItemClickListener;
 
-    public ItemsAdapter(OnItemClickListener onItemClickListener) {
+    ItemsAdapter(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
         dataset = new SortedList<>(Long.class, new SortedListAdapterCallback<Long>(this) { // yes, we're leaking half-constructed this. Currently, it's fine.
             @Override
             public int compare(Long left, Long right) {
-                // Long.compare(left, right)
-                return left < right ? -1 : (left.longValue() == right.longValue() ? 0 : 1);
+                return Long.compare(left, right);
             }
 
             @Override
             public boolean areContentsTheSame(Long oldItem, Long newItem) {
-                // Object.equals(oldItem, newItem)
-                return (oldItem == null) ? (newItem == null) : oldItem.equals(newItem);
+                return Objects.equals(oldItem, newItem);
             }
 
             @Override
             public boolean areItemsTheSame(Long item1, Long item2) {
-                // Object.equals(item1, item2)
-                return (item1 == null) ? (item2 == null) : item1.equals(item2);
+                return Objects.equals(item1, item2);
             }
         });
         setHasStableIds(true);
     }
 
-    public void addItem() {
+    void addItem() {
         dataset.add(currentMaxItem);
         currentMaxItem++;
     }
 
-    public void removeItem(Long item) {
+    void removeItem(Long item) {
         dataset.remove(item);
     }
 
@@ -78,6 +79,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         return dataset.size();
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -89,14 +91,14 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         holder.bindItem(dataset.get(position));
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
         }
 
-        public void bindItem(final Long item) {
-            TextView textView = (TextView) itemView.findViewById(android.R.id.text1);
+        void bindItem(final Long item) {
+            TextView textView = itemView.findViewById(android.R.id.text1);
             textView.setText(textView.getContext().getString(R.string.item_text, item));
 
             itemView.setOnClickListener(new View.OnClickListener() {

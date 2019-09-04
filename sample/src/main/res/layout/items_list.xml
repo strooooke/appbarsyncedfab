@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+  ~ Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
   ~    limitations under the License.
   -->
 
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_list"
@@ -30,4 +30,4 @@
     tools:context=".SimpleAppBarAppBarActivity"
     tools:showIn="@layout/app_bar_simple_app_bar"
     >
-</android.support.v7.widget.RecyclerView>
+</androidx.recyclerview.widget.RecyclerView>

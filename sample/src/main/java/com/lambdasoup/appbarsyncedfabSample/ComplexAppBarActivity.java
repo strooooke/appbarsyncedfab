@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+ * Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ public class ComplexAppBarActivity extends BaseAppBarActivity {
         View coordinatorLayout = findViewById(R.id.coordinator_layout);
         // Because we're using a single base layout, for proper appearance
         // of the collapsing toolbar layout, we need to do this programmatically.
-        //noinspection ConstantConditions
         coordinatorLayout.setFitsSystemWindows(true);
     }
 

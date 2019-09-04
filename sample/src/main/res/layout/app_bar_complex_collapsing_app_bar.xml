@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+  ~ Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
   -->
 
 
-<android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/app_bar"
     android:layout_width="match_parent"
@@ -23,7 +23,7 @@
     android:theme="@style/AppTheme.AppBarOverlay"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.CollapsingToolbarLayout
+    <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/toolbarCollapse"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,13 +40,13 @@
             app:layout_collapseMode="parallax" />
 
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             app:layout_collapseMode="pin" />
 
-    </android.support.design.widget.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     <TextView
         android:id="@+id/persistent_header"
@@ -57,5 +57,5 @@
         android:gravity="center"
         android:background="@color/colorPrimaryLight"
         android:text="@string/text_header_placeholder"/>
-</android.support.design.widget.AppBarLayout>
+</com.google.android.material.appbar.AppBarLayout>
 

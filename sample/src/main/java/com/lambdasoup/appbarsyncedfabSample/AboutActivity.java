@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+ * Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,10 @@
 
 package com.lambdasoup.appbarsyncedfabSample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.webkit.WebView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class AboutActivity extends AppCompatActivity {
 

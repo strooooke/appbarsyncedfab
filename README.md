@@ -20,35 +20,35 @@ Add as gradle dependency via [jitpack.io]: Add the JitPack repository in your ro
 Add the dependency in your app build.gradle file:
 ```
 	dependencies {
-	        compile 'com.github.strooooke:appbarsyncedfab:v0.4'
+	        implementation 'com.github.strooooke:appbarsyncedfab:v0.5'
 	}
 ```
 
 Add either the behavior to your FAB in XML
 ```
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     ...
   >
   
-  <android.support.design.widget.AppBarLayout
+  <com.google.android.material.appbar.AppBarLayout
     ...
     >
-  </android.support.design.widget.AppBarLayout>
+  </com.google.android.material.appbar.AppBarLayoutt>
 
   ...
 
-  <android.support.design.widget.FloatingActionButton
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
     ...
     app:layout_behavior="@string/appbarsyncedfab_fab_behavior"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 ```
 
 You can also wire up the listener, the CoordinatorLayout, the AppBarLayout and the FAB by hand:
 ```
-CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
-AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab); 
+CoordinatorLayout coordinatorLayout = findViewById(R.id.coordinatorLayout);
+AppBarLayout appBarLayout = findViewById(R.id.app_bar);
+FloatingActionButton fab = findViewById(R.id.fab); 
 FabOffsetter fabOffsetter = new FabOffsetter(coordinatorLayout, fab);
 appBarLayout.addOnOffsetChangedListener(fabOffsetter);
 ```
@@ -56,7 +56,7 @@ This way is not recommended; you will lose proper interaction with the snackbar.
 
 ## License
 
-    Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+    Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

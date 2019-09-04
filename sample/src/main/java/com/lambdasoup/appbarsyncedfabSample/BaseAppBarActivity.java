@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+ * Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,22 +18,25 @@ package com.lambdasoup.appbarsyncedfabSample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Common base for the different AppBarLayout example activities. Contains a RecyclerView
@@ -57,15 +60,14 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         // ViewStub replacement is here to allow DRY with the different activities
         // that differ only in their AppBarLayout. Usually, you'd just have your AppBarLayout
         // directly declared in your activity layout xml.
-        ViewStub appBarStub = (ViewStub) findViewById(R.id.app_bar_stub);
+        ViewStub appBarStub = findViewById(R.id.app_bar_stub);
 
         onBeforeInflateAppBarLayout();
-        //noinspection ConstantConditions
         appBarStub.setLayoutResource(getAppBarLayoutResource());
         appBarStub.inflate();
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             //noinspection ConstantConditions
@@ -73,32 +75,31 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
         }
 
 
-        final RecyclerView itemsList = (RecyclerView) findViewById(R.id.content_list);
+        final RecyclerView itemsList = findViewById(R.id.content_list);
         itemsAdapter = new ItemsAdapter(new ItemsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Long item) {
-                //noinspection ConstantConditions
                 Snackbar.make(itemsList, getString(R.string.item_clicked, item), Snackbar.LENGTH_LONG).show();
             }
         });
-        //noinspection ConstantConditions
         itemsList.setAdapter(itemsAdapter);
 
-        ItemTouchHelper swipeDismiss = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.START | ItemTouchHelper.END) {
+        ItemTouchHelper swipeDismiss = new ItemTouchHelper(
+                new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.START | ItemTouchHelper.END) {
             @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                                  @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 itemsAdapter.removeItem(viewHolder.getItemId());
             }
         });
         swipeDismiss.attachToRecyclerView(itemsList);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        //noinspection ConstantConditions
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,14 +107,13 @@ public abstract class BaseAppBarActivity extends AppCompatActivity
             }
         });
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //noinspection ConstantConditions
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.getMenu().findItem(getNavId()).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Juliane Lehmann <jl@lambdasoup.com>
+ * Copyright 2016-2019 Juliane Lehmann <jl@lambdasoup.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +16,20 @@
 
 package com.lambdasoup.appbarsyncedfab;
 
-import android.support.annotation.NonNull;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.annotation.NonNull;
+
 /**
- * {@link android.support.design.widget.AppBarLayout.OnOffsetChangedListener} implementation
+ * {@link com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener} implementation
  * that reacts on offset changes by translating the FAB towards the bottom. The FAB gets displaced
  * such that when the AppBarLayout is completely collapsed, then the top of the FAB is at the bottom
- * of the parent view (typically a {@link CoordinatorLayout}). For intermediate states, the fraction of the FAB
- * displacement respective to this total is relative to the fraction of the AppBarLayout collapse.
+ * of the parent view (typically a {@link androidx.coordinatorlayout.widget.CoordinatorLayout). For
+ * intermediate states, the fraction of the FAB displacement respective to this total is relative to
+ * the fraction of the AppBarLayout collapse.
  */
 @SuppressWarnings("WeakerAccess")
 public class FabOffsetter implements AppBarLayout.OnOffsetChangedListener {
